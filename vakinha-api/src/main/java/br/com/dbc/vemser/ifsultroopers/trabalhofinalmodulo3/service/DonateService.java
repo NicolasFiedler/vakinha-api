@@ -5,12 +5,10 @@ import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.donate.DonateDTO
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.DonateEntity;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.RequestEntity;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.exception.BusinessRuleException;
-import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository.DonateDashBoardRepository;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository.DonateRepository;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.repository.RequestRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,7 +26,7 @@ public class DonateService {
 
     private final RequestRepository requestRepository;
 
-    private final DonateDashBoardRepository donateDashBoardRepository;
+//    private final DonateDashBoardRepository donateDashBoardRepository;
 
     public DonateDTO create(DonateCreateDTO donateCreate, Integer idRequest) throws Exception {
 
@@ -42,7 +40,8 @@ public class DonateService {
 
             DonateDTO donateDTO = objectMapper.convertValue(donateRepository.save(donateEntity), DonateDTO.class);
 
-            donateDashBoardRepository.insert(donateEntity, requestEntity.getCategory().getDescription());
+            //TODO - createDonate to log
+//            donateDashBoardRepository.insert(donateEntity, requestEntity.getCategory().getDescription());
 
             requestService.checkClosed(idRequest);
 
@@ -64,7 +63,8 @@ public class DonateService {
 
         requestService.checkClosed(donateEntity.getIdRequest());
 
-        donateDashBoardRepository.update(id, donateEntity);
+        //TODO - updateDonate to log
+//        donateDashBoardRepository.update(id, donateEntity);
         return  objectMapper.convertValue(donateRepository.save(donateEntity), DonateDTO.class);
     }
 
@@ -90,7 +90,9 @@ public class DonateService {
         DonateEntity donateEntity = donateRepository.findById(id)
                 .orElseThrow(()->new BusinessRuleException("Donate não encontrada!"));
         donateRepository.deleteById(id);
-        donateDashBoardRepository.deleteById(id);
+
+        //TODO - deleteDonate to log
+//        donateDashBoardRepository.deleteById(id);
         DonateDTO donateDTO = objectMapper.convertValue(donateEntity, DonateDTO.class);
         requestService.incrementReachedValue(donateEntity.getIdRequest(), deleteValor(donateEntity.getDonateValue()));
         return donateDTO;
