@@ -26,7 +26,7 @@ public class DonateService {
 
     private final RequestRepository requestRepository;
 
-//    private final DonateDashBoardRepository donateDashBoardRepository;
+    private final DashBoardProducerService dashBoardProducerService;
 
     public DonateDTO create(DonateCreateDTO donateCreate, Integer idRequest) throws Exception {
 
@@ -40,8 +40,7 @@ public class DonateService {
 
             DonateDTO donateDTO = objectMapper.convertValue(donateRepository.save(donateEntity), DonateDTO.class);
 
-            //TODO - createDonate to log
-//            donateDashBoardRepository.insert(donateEntity, requestEntity.getCategory().getDescription());
+            dashBoardProducerService.send(donateEntity, requestEntity.getCategory().getDescription(), 0);
 
             requestService.checkClosed(idRequest);
 
@@ -63,8 +62,9 @@ public class DonateService {
 
         requestService.checkClosed(donateEntity.getIdRequest());
 
-        //TODO - updateDonate to log
-//        donateDashBoardRepository.update(id, donateEntity);
+        RequestEntity requestEntity = requestRepository.getById(donateEntity.getIdRequest());
+        dashBoardProducerService.send(donateEntity, requestEntity.getCategory().getDescription(), 1);
+
         return  objectMapper.convertValue(donateRepository.save(donateEntity), DonateDTO.class);
     }
 
@@ -91,8 +91,8 @@ public class DonateService {
                 .orElseThrow(()->new BusinessRuleException("Donate não encontrada!"));
         donateRepository.deleteById(id);
 
-        //TODO - deleteDonate to log
-//        donateDashBoardRepository.deleteById(id);
+        dashBoardProducerService.send(donateEntity, "", 2);
+
         DonateDTO donateDTO = objectMapper.convertValue(donateEntity, DonateDTO.class);
         requestService.incrementReachedValue(donateEntity.getIdRequest(), deleteValor(donateEntity.getDonateValue()));
         return donateDTO;
