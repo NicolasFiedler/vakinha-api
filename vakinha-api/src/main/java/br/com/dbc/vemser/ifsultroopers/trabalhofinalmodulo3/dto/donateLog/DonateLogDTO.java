@@ -12,5 +12,4 @@ public class DonateLogDTO {
     private String donatorEmail;
     private Double donateValue;
     private String category;
-    private Integer operation;
 }

@@ -30,6 +30,7 @@ public class DashBoardProducerService {
         String jsonMessege = null;
         DonateLogDTO donateLogDTO = objectMapper.convertValue(donateEntity, DonateLogDTO.class);
         donateLogDTO.setCategory(category);
+        donateLogDTO.setOperation(operation);
         try {
             jsonMessege = objectMapper.writeValueAsString(donateLogDTO);
         } catch (JsonProcessingException e) {
@@ -38,7 +39,7 @@ public class DashBoardProducerService {
 
         if (jsonMessege != null){
             Message<String> message = MessageBuilder.withPayload(jsonMessege)
-                    .setHeader(KafkaHeaders.TOPIC, "${kafka.topic.log}")
+                    .setHeader(KafkaHeaders.TOPIC, "dashBoardLogs")
                     .setHeader(KafkaHeaders.MESSAGE_KEY, UUID.randomUUID().toString())
                     .setHeader(KafkaHeaders.PARTITION_ID, operation)
                     .build();
