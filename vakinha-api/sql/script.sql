@@ -25,6 +25,7 @@ CREATE TABLE  USERS (
   name TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL,
+  phone_number TEXT,
   type boolean NOT NULL,
   document TEXT NOT NULL UNIQUE,
   
@@ -68,6 +69,7 @@ CREATE TABLE  DONATE (
   id_request numeric NOT NULL,
   donator_name TEXT NOT NULL,
   donator_email TEXT NOT NULL,
+  phone_number TEXT,
   donate_value numeric(9, 2) NOT NULL,
   donate_description TEXT,
   

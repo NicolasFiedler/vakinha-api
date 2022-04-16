@@ -4,10 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.persistence.Column;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -23,6 +20,10 @@ public class DonateCreateDTO {
     @Email
     @ApiModelProperty(value = "Email do Doador")
     private String donatorEmail;
+
+    @Size(max = 11)
+    @ApiModelProperty(value = "numero de telefone")
+    private String phoneNumber;
 
     @NotNull @Min(1)
     @ApiModelProperty(value = "Valor da doação")

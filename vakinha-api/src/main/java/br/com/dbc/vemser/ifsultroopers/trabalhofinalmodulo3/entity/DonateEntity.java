@@ -28,6 +28,9 @@ public class DonateEntity {
     @Column(name = "donator_email")
     private String donatorEmail;
 
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
     @Column(name = "donate_value")
     private Double donateValue;
 
