@@ -1,5 +1,6 @@
 package com.dbc.vakinhaemail.config;
 
+import java.util.Objects;
 import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class MailConfig {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         mailSender.setHost(env.getProperty("mail.smtp.host"));
-        mailSender.setPort(587);
+        mailSender.setPort(Integer.parseInt(Objects.requireNonNull(env.getProperty("mail.smtp.port"))));
         mailSender.setUsername(env.getProperty("mail.smtp.username"));
         mailSender.setPassword(env.getProperty("mail.smtp.password"));
 

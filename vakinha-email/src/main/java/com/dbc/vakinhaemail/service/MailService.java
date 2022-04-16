@@ -17,7 +17,7 @@ public class MailService {
 
         simpleMailMessage.setFrom(messageDTO.getSender());
         simpleMailMessage.setTo(messageDTO.getReceiver()
-                .toArray(new String[messageDTO.getReceiver().size()]));
+                .toArray(new String[0]));
         simpleMailMessage.setSubject(messageDTO.getSubject());
         simpleMailMessage.setText(messageDTO.getText());
 
