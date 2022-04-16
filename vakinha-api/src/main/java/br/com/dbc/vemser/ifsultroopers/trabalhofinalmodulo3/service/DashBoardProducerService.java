@@ -30,7 +30,6 @@ public class DashBoardProducerService {
         String jsonMessege = null;
         DonateLogDTO donateLogDTO = objectMapper.convertValue(donateEntity, DonateLogDTO.class);
         donateLogDTO.setCategory(category);
-        donateLogDTO.setOperation(operation);
         try {
             jsonMessege = objectMapper.writeValueAsString(donateLogDTO);
         } catch (JsonProcessingException e) {
