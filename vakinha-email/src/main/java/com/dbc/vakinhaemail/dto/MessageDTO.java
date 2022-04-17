@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MessageDTO {
     private String sender;
-    private List<String> receiver;
+    private String receiver;
     private String subject;
     private String text;
 }

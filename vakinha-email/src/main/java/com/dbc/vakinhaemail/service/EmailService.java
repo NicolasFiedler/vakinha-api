@@ -7,17 +7,16 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MailService {
+public class EmailService {
 
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public void enviar(MessageDTO messageDTO) {
+    public void send(MessageDTO messageDTO) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
         simpleMailMessage.setFrom(messageDTO.getSender());
-        simpleMailMessage.setTo(messageDTO.getReceiver()
-                .toArray(new String[0]));
+        simpleMailMessage.setTo(messageDTO.getReceiver());
         simpleMailMessage.setSubject(messageDTO.getSubject());
         simpleMailMessage.setText(messageDTO.getText());
 

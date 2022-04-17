@@ -35,6 +35,7 @@ public class RequestService {
 
     private final BankAccountService bankAccountService;
 
+    private final EmailProducerService emailProducerService;
 
 
     public List<RequestDTO> list() {
@@ -185,13 +186,13 @@ public class RequestService {
             requestEntity.setStatusRequest(checkClosedValue(requestEntity.getReachedValue(),requestEntity.getGoal()));
 
         requestRepository.save(requestEntity);
+        if (!requestEntity.getStatusRequest()) {
+            emailProducerService.send(requestEntity);
+        }
     }
 
     public Boolean checkClosedValue(Double valRequest, Double valGoal){
-        if (valRequest >= valGoal) {
-            return false;
-        }
-        else {return true;}
+        return valRequest < valGoal;
     }
 
 }
