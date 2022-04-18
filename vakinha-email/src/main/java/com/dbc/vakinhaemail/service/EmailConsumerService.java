@@ -21,7 +21,7 @@ public class EmailConsumerService {
 
     @KafkaListener(
             topics = "${kafka.topic.log}",
-            groupId = "dashBoardDonate",
+            groupId = "emails",
             containerFactory = "listenerContainerFactory")
     public void consumeEmailService(@Payload String message,
                                     @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
@@ -33,11 +33,8 @@ public class EmailConsumerService {
         messageDTO.setSender("Vakinha <vakinhavemser@gmail.com>");
         messageDTO.setReceiver(emailEntity.getOwnerEmail());
         messageDTO.setSubject("Sua Vakinha atingiu a meta!");
-        messageDTO.setText("""
-                Olá, USERNAME!
-                
-                Sua a meta de GOAL da sua Vakinha TITLE foi atingida com sucesso! RÉPI BÃRDEI!
-                """);
+        messageDTO.setText("Olá, "+emailEntity.getUsername()+"!\n\n"+
+                "Sua a meta de R$ "+String.format("%.2f", emailEntity.getGoal())+" da sua Vakinha \""+emailEntity.getTitle()+"\" foi atingida com sucesso!");
 
         try {
             log.info("Vakinha fechada e e-mail enviado!");

@@ -13,5 +13,5 @@ public class EmailEntity {
         private String username;
         private String ownerEmail;
         private String title;
-        private String goal;
+        private Double goal;
 }

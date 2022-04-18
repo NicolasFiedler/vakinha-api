@@ -1,24 +1,12 @@
 package com.dbc.vakinhaemail;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.dbc.vakinhaemail.dto.MessageDTO;
-import com.dbc.vakinhaemail.service.EmailService;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
+@SpringBootApplication
 public class VakinhaEmailApp {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(
-				VakinhaEmailApp.class.getPackage().getName());
-
-		EmailService emailService = applicationContext.getBean(EmailService.class);
-		emailService.send(new MessageDTO("Vakinha <vakinhavemser@gmail.com\n>",
-				"Gabriel Poersch <gabpoersch@gmail.com>",
-				"Aula Spring E-mail",
-				"Olá! \n\n O envio de e-mail deu certo!"));
-
-		applicationContext.close();
-
-		System.out.println("Fim!");
+		SpringApplication.run(VakinhaEmailApp.class, args);
 	}
 }
