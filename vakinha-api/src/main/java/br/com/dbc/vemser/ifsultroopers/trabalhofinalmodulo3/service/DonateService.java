@@ -40,9 +40,9 @@ public class DonateService {
 
             DonateDTO donateDTO = objectMapper.convertValue(donateRepository.save(donateEntity), DonateDTO.class);
 
+            requestService.checkClosed(idRequest);
             dashBoardProducerService.send(donateEntity, requestEntity.getCategory().getDescription(), 0);
 
-            requestService.checkClosed(idRequest);
 
 
         return  donateDTO;}

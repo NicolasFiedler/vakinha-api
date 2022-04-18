@@ -1,11 +1,7 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request;
 
-import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.Category;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -22,5 +18,5 @@ public class RequestEmailDTO extends RequestCreateDTO {
     private String title;
 
     @ApiModelProperty(value = "Meta")
-    private String goal;
+    private Double goal;
 }

@@ -1,6 +1,5 @@
 package br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.service;
 
-import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.dto.request.RequestEmailDTO;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.RequestEntity;
 import br.com.dbc.vemser.ifsultroopers.trabalhofinalmodulo3.entity.UsersEntity;
@@ -31,11 +30,11 @@ public class EmailProducerService {
 
     public void send (RequestEntity requestEntity) {
         UsersEntity usersEntity = usersRepository.getById(requestEntity.getIdUser());
-        String emailToBeUsed = usersEntity.getEmail();
 
-        RequestEmailDTO requestEmailDTO = objectMapper.convertValue(requestEntity, RequestEmailDTO.class);
-        requestEmailDTO.setUsername(usersEntity.getUsername());
-        requestEmailDTO.setOwnerEmail(emailToBeUsed);
+        RequestEmailDTO requestEmailDTO = new RequestEmailDTO();
+
+        requestEmailDTO.setUsername(usersEntity.getName());
+        requestEmailDTO.setOwnerEmail(usersEntity.getEmail());
         requestEmailDTO.setTitle(requestEntity.getTitle());
         requestEmailDTO.setGoal(requestEntity.getGoal());
 
