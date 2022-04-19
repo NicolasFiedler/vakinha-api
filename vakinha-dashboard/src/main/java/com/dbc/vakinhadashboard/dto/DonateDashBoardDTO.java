@@ -13,4 +13,13 @@ public class DonateDashBoardDTO {
     private String category;
     private Integer donates;
     private Double donatesValue;
+
+    @Override
+    public String toString() {
+        return "DonateDashBoardDTO{" +
+                "category='" + category + '\'' +
+                ", donates=" + donates +
+                ", donatesValue=" + donatesValue +
+                '}';
+    }
 }

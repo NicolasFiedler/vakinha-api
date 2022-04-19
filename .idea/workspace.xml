@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="33102591-4078-41cd-a8e6-2093bb1687fc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/vakinha-api/src/main/java/br/com/dbc/vemser/ifsultroopers/trabalhofinalmodulo3/service/EmailProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/vakinha-api/src/main/java/br/com/dbc/vemser/ifsultroopers/trabalhofinalmodulo3/service/EmailProducerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vakinha-api/src/main/java/br/com/dbc/vemser/ifsultroopers/trabalhofinalmodulo3/service/RequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/vakinha-api/src/main/java/br/com/dbc/vemser/ifsultroopers/trabalhofinalmodulo3/service/RequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail/VakinhaEmailApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail/VakinhaEmailApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail/dto/MessageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail/dto/MessageDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail/entity/EmailEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail/entity/EmailEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail/service/MailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail/service/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vakinha-email/src/main/resources/env/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/vakinha-email/src/main/resources/env/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="33102591-4078-41cd-a8e6-2093bb1687fc" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,18 +54,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/gabpoersch/Desktop/DBC/vakinha-api/vakinha-email/src/main/java/com/dbc/vakinhaemail&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
-  }
-}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/vakinha-email/src/main/java/com/dbc/vakinhaemail" />

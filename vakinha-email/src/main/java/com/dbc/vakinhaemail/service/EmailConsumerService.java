@@ -9,7 +9,12 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import java.util.LinkedList;
+import java.util.Objects;
+import java.util.Queue;
 
 @Service
 @Slf4j
@@ -18,6 +23,7 @@ public class EmailConsumerService {
 
     private final ObjectMapper objectMapper;
     private final EmailService emailService;
+    private Queue<MessageDTO> queue = new LinkedList<>();
 
     @KafkaListener(
             topics = "${kafka.topic.log}",
@@ -34,13 +40,20 @@ public class EmailConsumerService {
         messageDTO.setReceiver(emailEntity.getOwnerEmail());
         messageDTO.setSubject("Sua Vakinha atingiu a meta!");
         messageDTO.setText("Olá, "+emailEntity.getUsername()+"!\n\n"+
-                "Sua a meta de R$ "+String.format("%.2f", emailEntity.getGoal())+" da sua Vakinha \""+emailEntity.getTitle()+"\" foi atingida com sucesso!");
+                "Sua meta de R$ "+String.format("%.2f", emailEntity.getGoal())+" da sua Vakinha \""+emailEntity.getTitle()+"\" foi atingida com sucesso!");
 
-        try {
+        queue.add(messageDTO);
+    }
+
+    @Scheduled(fixedDelay = 30000)
+    private void enviaEmail () {
+        int i = 0;
+        while (!queue.isEmpty() && i < 10){
+
             log.info("Vakinha fechada e e-mail enviado!");
-            emailService.send(messageDTO);
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            emailService.send(Objects.requireNonNull(queue.poll()));
+
+            i++;
         }
     }
 }
